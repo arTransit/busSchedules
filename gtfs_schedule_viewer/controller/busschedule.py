@@ -41,7 +41,7 @@ def stops():
     tripList=[]
     stopList=[]
     
-    for r in query_db( query,[system,route,direction,date_code] ):
+    for r in query_db( query,[system,route,direction,date] ):
         run_number = r['run_number']
         print "run_number " + str(run_number)
         print "current_run_number " + str(current_run_number)
