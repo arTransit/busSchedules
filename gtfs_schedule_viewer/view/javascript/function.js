@@ -28,8 +28,6 @@ $(document).ready(function(){
     });
 
     $.getJSON("/busschedule/systems", function(json) {
-    //$.getJSON("http://localhost:5000/systems", function(json) {
-        //alert( json[0].agency_id );
         for (var i = 0; i < json.length; i++) {
             systemSelect.append($("<option />").val(json[i].agency_id).text(json[i].system_name));
         }
@@ -62,24 +60,6 @@ function request_schedule(query) {
     });
 }
 
-function request_schedule_old(query) {
-  $.ajax({
-    //********This line must point ot the url for requesting the schedule data *****//
-    //url:"../controller/ResponseMock.json",
-    url:"/busschedule/stops",
-    type:'get',
-    data:query,
-    dataType:'json',
-    success: function(data){
-      alert("Status: " + textStatus); alert("Error: " + errorThrown);
-      build_table(data);
-      showTable();
-    },
-    error: function(XMLHttpRequest, textStatus, errorThrown){
-      alert("Status: " + textStatus); alert("Error: " + errorThrown);
-    }
-  })
-}
 
 function build_table(data) {
   var system = data['system'];
