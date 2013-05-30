@@ -34,14 +34,20 @@ def stops():
     direction = request.args.get('direction', '')
     date=request.args.get('date', '')
     
+    query = "select route_short_name,route_long_name from routes where agency_id=? and route_short_name=?"
+    
+    r = query_db( query,[system,route],1 )
+    route_display_name = r['route_short_name'] + ' ' + r['route_long_name']
+    
     query = "select run_number,stop_order,stop_id,stop_short_name,departure_time from route_times where agency_id=? and route_short_name=? and direction=? and date_code in (select date_code from date_codes where date=?) order by run_number,stop_order"
 
-    result=dict(system=system, route=route, direction=direction)
+    result=dict(system=system, route=route, direction=direction, route_display_name=route_display_name)
+    #result=dict(system=system, route=route, direction=direction )
     current_run_number = -1
     tripList=[]
     stopList=[]
     
-    for r in query_db( query,[system,route,direction,date_code] ):
+    for r in query_db( query,[system,route,direction,date] ):
         run_number = r['run_number']
         print "run_number " + str(run_number)
         print "current_run_number " + str(current_run_number)
