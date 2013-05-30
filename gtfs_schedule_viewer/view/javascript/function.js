@@ -67,7 +67,7 @@ function build_table(data) {
   var resultsSection = $('#results_section');
   resultsSection.empty();
   
-  var html = '<h2>' + routeDisplayName +' (' + direction + ' )</h2>\n';
+  var html = '<h2>Route: ' + routeDisplayName +' (' + direction + ')</h2>\n';
   html += '<table class="nicetable" id="schedule">';
   html += '<colgroup><col><col>';
   for (trip in data['trips']){
