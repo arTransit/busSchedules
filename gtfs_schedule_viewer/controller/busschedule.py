@@ -2,9 +2,10 @@ from flask import Flask, jsonify, request,g,Response
 from contextlib import closing
 import sqlite3
 import json
+import os
 
 # configuration
-DATABASE = 'C:/AndrewRoss/Work/busSchedules/gtfs_schedule_viewer/controller/schedule.db'
+DATABASE = os.path.dirname(os.path.abspath(__file__)) +'\schedule.db'
 DEBUG = True
 
 app = Flask(__name__)
