@@ -1,0 +1,17 @@
+bin/
+tmp/
+*.tmp
+*.bak
+
+# sqlite DBs
+*.db
+
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Python
+*.py[co]
+

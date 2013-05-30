@@ -1,0 +1,34 @@
+body{font-family:Arial, sans-serif;font-size:small}
+h1 {font-size:x-large;text-decoration:underline}
+.boxy{
+  //min-width: 350px;
+  border:3px solid black;
+  border-radius:10px;
+  box-shadow: 10px 10px 5px #888888;
+  padding:10px 10px 20px 10px;
+  background-color:white;
+}
+table.nicetable {
+  font-family: verdana,arial,sans-serif;
+  font-size:13px;
+  //color:#333333;
+  border-width: 1px;
+  border-color: #a9c6c9;
+  border-collapse: collapse;
+}
+table.nicetable th {
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  background-color:#CCC;
+  border-color: #333333;
+
+}
+table.nicetable td {
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #333333;
+}
+table.nicetable col:first-child {background: #f0f0ff}
+table.nicetable col:nth-child(2n+3) {background: #CCC}

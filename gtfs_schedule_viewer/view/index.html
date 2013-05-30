@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <title>Transit Bus Schedules</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./javascript/function.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+  </head>
+  <body>
+    <h1>Transit Bus Schedules</h1>
+    <div id="container">
+      <div id="search_panel" class="boxy">
+        <table>
+          <tr>
+            <td>System:</td>
+            <td>
+              <select id="system" name="system"></select>
+            </td>
+          </tr><tr>
+            <td>Bus Route Number:</td>
+            <td><select id="route" name="route"></select></td>
+          </tr><tr>
+            <td>Direction:</td>
+            <td><select id="direction" name="direction"></select></td>
+          </tr><tr>
+            <td>Date(YYYYMMDD):</td>
+            <td><input id="date" name="date" type="text" maxlength="8" value="20130419"></td>
+          </tr><tr>
+            <td></td>
+            <td><button id="submit" type ="button">Submit</button></td>
+          </tr>
+        </table>
+      </div>
+      <p/>
+      <div id="results_table" class="boxy">
+        <table class="nicetable" id="schedule"></table>
+      </div>
+    </div>
+  </body>
+</html>
