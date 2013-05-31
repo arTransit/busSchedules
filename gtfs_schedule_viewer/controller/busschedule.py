@@ -42,7 +42,8 @@ def stops():
     
     query = "select run_number,stop_order,stop_id,stop_short_name,departure_time from route_times where agency_id=? and route_short_name=? and direction=? and date_code in (select date_code from date_codes where date=?) order by run_number,stop_order"
 
-    result=dict(system=system, route=route, direction=direction, route_display_name=route_display_name)
+    result=dict(system=system, route=route, direction=direction, 
+            route_display_name=route_display_name, date=date)
     #result=dict(system=system, route=route, direction=direction )
     current_run_number = -1
     tripList=[]

@@ -62,32 +62,40 @@ function build_table(data) {
   var system = data['system'];
   var route = data['route'];
   var direction = data['direction'];
+  var dateVal = data['date'];
   var routeDisplayName = data['route_display_name'];
   var num_trips = data['trips'].length;
   var resultsSection = $('#results_section');
   resultsSection.empty();
   
   var html = '<h2>Route: ' + routeDisplayName +' (' + direction + ')</h2>\n';
-  html += '<table class="nicetable" id="schedule">';
-  html += '<colgroup><col><col>';
-  for (trip in data['trips']){
-    html += '<col>'
+
+  console.log('>>>trips size:' + num_trips);
+  if (num_trips < 1) {
+    html += 'No trips scheduled on ' + dateVal
+  } else {
+      html += '<table class="nicetable" id="schedule">';
+      html += '<colgroup><col><col>';
+      
+      for (trip in data['trips']){
+        html += '<col>'
+      }
+      html += '</colgroup>'
+      html += '<tr><th>Stop ID</th><th>Stop Name</th>';
+      for (trip in data['trips']){
+        html+= '<th>'+data["trips"][trip]["run_number"]+'</th>';
+      }
+      html+= '</tr>'
+      for (stop in data['trips'][0]['stops']){
+        html+='<tr><td>'+data['trips'][0]['stops'][stop]['stop_id']+'</td>'
+        html+='<td>'+data['trips'][0]['stops'][stop]['stop_short_name']+'</td>'
+        for (trip in data['trips']){
+          html+='<td>'+data['trips'][trip]['stops'][stop]['departure_time']+'</td>'
+        }
+        html+='</tr>'
+      }
+      html+='</table>'
   }
-  html += '</colgroup>'
-  html += '<tr><th>Stop ID</th><th>Stop Name</th>';
-  for (trip in data['trips']){
-    html+= '<th>'+data["trips"][trip]["run_number"]+'</th>';
-  }
-  html+= '</tr>'
-  for (stop in data['trips'][0]['stops']){
-    html+='<tr><td>'+data['trips'][0]['stops'][stop]['stop_id']+'</td>'
-    html+='<td>'+data['trips'][0]['stops'][stop]['stop_short_name']+'</td>'
-    for (trip in data['trips']){
-      html+='<td>'+data['trips'][trip]['stops'][stop]['departure_time']+'</td>'
-    }
-    html+='</tr>'
-  }
-  html+='</table>'
   resultsSection.append(html);
 
 }
